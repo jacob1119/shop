@@ -16,15 +16,15 @@
 	<div class="header">
 		<div class="headertop_desc">
 			<div class="call">
-				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
+			  <p><span>需要帮助?</span> 拨打 <span class="number">1-22-3456789</span></span></p>
 			</div>
 			<div class="account_desc">
 				<ul>
-					<li><a href="#">Register</a></li>
-					<li><a href="#">Login</a></li>
-					<li><a href="#">Delivery</a></li>
-					<li><a href="#">Checkout</a></li>
-					<li><a href="#">My Account</a></li>
+					<li><a href="/register">注册</a></li>
+                    <li><a href="/login">登录</a></li>
+                    <li><a href="delivery.html">物流</a></li>
+                    <li><a href="#">结算</a></li>
+                    <li><a href="#">个人中心</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -34,9 +34,9 @@
 				<a href="index.html"><img src="/static/images/logo.png" alt="" /></a>
 			</div>
 			  <div class="cart">
-			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
+			  	   <p> <span>购物车:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - ¥0.00
 			  	   	<ul class="dropdown">
-							<li>you have no items in your Shopping cart</li>
+							<li>没有商品</li>
 					</ul></div></p>
 			  </div>
 			  <script type="text/javascript">
@@ -72,12 +72,12 @@
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li class="active"><a href="index.html">Home</a></li>
-			    	<li><a href="about.html">About</a></li>
-			    	<li><a href="delivery.html">Delivery</a></li>
-			    	<li><a href="news.html">News</a></li>
-			    	<li><a href="contact.html">Contact</a></li>
-			    	<div class="clear"></div>
+			    	<li><a href="index">首页</a></li>
+                    <li class="active"><a href="about">关于</a></li>
+                    <li><a href="delivery">物流</a></li>
+                    <li><a href="news">上新</a></li>
+                    <li><a href="contact">联系我们</a></li>
+                    <div class="clear"></div>
      			</ul>
 	     	</div>
 	     	<div class="search_box">
@@ -91,7 +91,7 @@
 			<div class="header_bottom_left">				
 				<div class="categories">
 				  <ul>
-				  	<h3>Categories</h3>
+				  	<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分类</h3>
 				      <li><a href="#">Mobile Phones</a></li>
 				      <li><a href="#">Desktop</a></li>
 				      <li><a href="#">Laptop</a></li>
@@ -165,7 +165,7 @@
     <div class="content">
     	<div class="content_top">
     		<div class="heading">
-    		<h3>New Products</h3>
+    		<h3>热卖商品</h3>
     		</div>
     		<div class="see">
     			<p><a href="#">See all Products</a></p>
@@ -230,7 +230,7 @@
 			</div>
 			<div class="content_bottom">
     		<div class="heading">
-    		<h3>Feature Products</h3>
+    		<h3>商品上新</h3>
     		</div>
     		<div class="see">
     			<p><a href="#">See all Products</a></p>

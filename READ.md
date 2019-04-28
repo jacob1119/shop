@@ -8,3 +8,11 @@
      使用centos 7.2
      使用MySQL
      使用x-Admin模板
+     
+     
+     
+     
+##### 地址
+   商城前端：http://graduate.hjtvsl.cn:8080/
+   
+   商城后端管理系统：http://graduate.hjtvsl.cn:46664/     

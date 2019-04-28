@@ -1,8 +1,9 @@
 package main
 
 import (
-	_ "shop/pre_shop/routers"
 	"github.com/astaxie/beego"
+	_ "shop/pre_shop/routers"
+	_ "shop/pre_shop/models"
 )
 
 func main() {
