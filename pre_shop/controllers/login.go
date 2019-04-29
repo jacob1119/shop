@@ -38,10 +38,9 @@ func (c *LoginController) Login() {
 	if err == nil {
 
 		// 设置session
-		c.SetSession(username,username)
+		c.SetSession("uid",username)
 
-
-		u := c.GetSession(username)
+		u := c.GetSession("uid")
 		fmt.Sprintf("%x", u)
 		c.Data["Tips"] = "尊敬的"+ u.(string) +"您好，您已经成功登录"
 		c.TplName = "welcome.tpl"

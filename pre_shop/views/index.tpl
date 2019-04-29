@@ -24,7 +24,7 @@
                     <li><a href="/login">登录</a></li>
                     <li><a href="delivery.html">物流</a></li>
                     <li><a href="#">结算</a></li>
-                    <li><a href="#">个人中心</a></li>
+                    <li><a href="/user/info">个人中心</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -92,18 +92,18 @@
 				<div class="categories">
 				  <ul>
 				  	<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分类</h3>
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
+				      <li><a href="#">男装 &amp; 女装</a></li>
+				      <li><a href="#">手机数码 &amp; 家用电器</a></li>
+				      <li><a href="#">美妆 &amp; 护肤</a></li>
+				      <li><a href="#">家具 &amp; 饰品</a></li>
+				      <li><a href="#">整车 &amp; 车品</a></li>
+				       <li><a href="#">健身器材 &amp; 游戏周边</a></li>
+				       <li><a href="#">箱包</a></li>
+				       <li><a href="#">服饰配件</a></li>
+				       <li><a href="#">宠物用品</a></li>
+				       <li><a href="#">童装童鞋</a></li>
+				       <li><a href="#">生活用品</a></li>
+				       <li><a href="#">乐器 &amp; 玩具</a></li>
 				  </ul>
 				</div>					
 	  	     </div>
@@ -168,7 +168,7 @@
     		<h3>热卖商品</h3>
     		</div>
     		<div class="see">
-    			<p><a href="#">See all Products</a></p>
+    			<p><a href="#">更多商品</a></p>
     		</div>
     		<div class="clear"></div>
     	</div>
@@ -233,7 +233,7 @@
     		<h3>商品上新</h3>
     		</div>
     		<div class="see">
-    			<p><a href="#">See all Products</a></p>
+    			<p><a href="#">更多商品</a></p>
     		</div>
     		<div class="clear"></div>
     	</div>

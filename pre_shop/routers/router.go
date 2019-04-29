@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/astaxie/beego"
 	"shop/pre_shop/controllers"
+	"shop/pre_shop/controllers/user"
 )
 
 func init() {
@@ -20,4 +21,9 @@ func init() {
 	beego.Router("/user/login",&controllers.LoginController{},`post:Login`)
 	beego.Router("/register",&controllers.RegisterController{})
 	beego.Router("/user/register",&controllers.RegisterController{},`post:Register`)
+
+
+	//用户个人中心模块
+	beego.Router("/user/info",&user.UserController{})
+
 }
