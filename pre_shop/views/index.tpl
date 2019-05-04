@@ -92,18 +92,11 @@
 				<div class="categories">
 				  <ul>
 				  	<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分类</h3>
-				      <li><a href="#">男装 &amp; 女装</a></li>
-				      <li><a href="#">手机数码 &amp; 家用电器</a></li>
-				      <li><a href="#">美妆 &amp; 护肤</a></li>
-				      <li><a href="#">家具 &amp; 饰品</a></li>
-				      <li><a href="#">整车 &amp; 车品</a></li>
-				       <li><a href="#">健身器材 &amp; 游戏周边</a></li>
-				       <li><a href="#">箱包</a></li>
-				       <li><a href="#">服饰配件</a></li>
-				       <li><a href="#">宠物用品</a></li>
-				       <li><a href="#">童装童鞋</a></li>
-				       <li><a href="#">生活用品</a></li>
-				       <li><a href="#">乐器 &amp; 玩具</a></li>
+                       {{range $index, $elem := .Cat}}
+                           {{if $elem}}
+                                <li><a href="/category/{{$index}}"> {{$elem}} </a></li>
+                           {{end}}
+                       {{end}}
 				  </ul>
 				</div>					
 	  	     </div>

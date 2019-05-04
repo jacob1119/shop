@@ -26,4 +26,8 @@ func init() {
 	//用户个人中心模块
 	beego.Router("/user/info",&user.UserController{})
 
+
+	//商品模块
+	beego.Router("/user/goods",&user.GoodsController{},`post:Sell`)
+
 }
