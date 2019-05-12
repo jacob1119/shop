@@ -109,19 +109,19 @@
 									     <a href="preview.html"><img src="/static/images/slide-1-image.png" alt="learn more" /></a>
 									  </div>
 						             	<div class="slider-text">
-		                                 <h1>Clearance<br><span>SALE</span></h1>
-		                                 <h2>UPTo 20% OFF</h2>
+		                                 <h1>精品推荐<br><span>9成新</span></h1>
+		                                 <h2>物美价廉</h2>
 									   <div class="features_list">
-									   	<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>							               
+									   	<h4>精美飞利浦大音响</h4>
 							            </div>
-							             <a href="preview.html" class="button">Shop Now</a>
+							             <a href="preview.html" class="button">现在购买</a>
 					                   </div>			               
 									  <div class="clear"></div>				
 				                  </div>	
 						             	<div class="slide">
 						             		<div class="slider-text">
-		                                 <h1>Clearance<br><span>SALE</span></h1>
-		                                 <h2>UPTo 40% OFF</h2>
+		                                 <h1>精品推荐<br><span>8成新</span></h1>
+		                                 <h2>物美价廉</h2>
 									   <div class="features_list">
 									   	<h4>Get to Know More About Our Memorable Services</h4>							               
 							            </div>

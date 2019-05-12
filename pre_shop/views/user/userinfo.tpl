@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{.Title}}</title>
     <script type="text/javascript" src="/static/user/js/safe/aywmq_qt.js"></script>
     <script type="text/javascript" src="/static/user/js/safe/da_opt.js"></script>
     <meta name="keywords" content="">
@@ -36,70 +36,6 @@
                 <a href="/" class="ng-bar-node ng-bar-node-backhome" id="ng-bar-node-backhome" style="display: block;">
                     <span><img src="/static/user/img/Home.png" style="margin-right: 10px;"/>返回首页</span>
                 </a>
-                <div class="ng-bar-node-box ng-site-nav-box">
-                    <div class="ng-sn-site-nav ng-d-box site-nav-child" style="display:none;">
-                        <dl class="sn-site-list lnb">
-                            <dt>
-                                特色购物
-                             </dt>
-                            <dd>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                            </dd>
-                        </dl>
-                        <dl class="sn-site-list">
-                            <dt>
-                            主题频道
-                           </dt>
-                            <dd>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                            </dd>
-                        </dl>
-                        <dl class="sn-site-list">
-                            <dt>
-                    生活助手
-                   </dt>
-                            <dd>
-                                <p><a target="_blank">###<i class="hot"></i></a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                            </dd>
-                        </dl>
-                        <dl class="sn-site-list">
-                            <dt>
-                    会员服务
-                   </dt>
-                            <dd>
-                                <p><a target="_blank">###<i class="hot"></i></a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                            </dd>
-                        </dl>
-                        <dl class="sn-site-list rnb">
-                            <dt>
-                    更多热点
-                   </dt>
-                            <dd>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###</a></p>
-                                <p><a target="_blank">###<i class="hot"></i></a></p>
-                            </dd>
-                        </dl>
-                        <a href="" class="ng-close"><em class="ng-iconfont"></em></a>
-                    </div>
-                </div>
-
-            </div>
             <div class="ng-toolbar-right">
                 </div>
             </div>
@@ -148,17 +84,9 @@
                         <div class="edit-avatar"></div>
                         <a class="text-edit-avatar">修改</a>
                     </div>
-                    <a>sunshine</a>
+                    <a>{{.Username}}</a>
                 </div>
-
                 <div class="ms-name-info">
-                    <div class="link-myinfo">
-                        <a>我的编号:99653</a>
-                    </div>
-                    <div class="info-member">
-                        <span style="margin-left: 20px;">
-                     <a target="_blank" >我的资料</a></span>
-                    </div>
                     <div class="info-safety">
                         <a class="manage-addr"><i style="background-image: url(/static/user/img/地址管理.png);"></i>地址管理</a>
                     </div>
@@ -243,86 +171,137 @@
                         <div class="server-tab" style="margin-top: 20px;">
 
                             <ul class="sui-nav nav-tabs">
-                              <li class="active"><a href="#index" data-toggle="tab">所有商品</a></li>
-                              <li><a href="#profile" data-toggle="tab">我的拍卖</a></li>
+                              <li class="active"><a href="#index" data-toggle="tab">我的提醒</a></li>
+                              <li><a href="#profile" data-toggle="tab">我的发售</a></li>
                               <li><a href="#about" data-toggle="tab">我的购买</a></li>
                               <li><a href="#tixing" data-toggle="tab">发售商品</a></li>
-                              <li><a href="#set" data-toggle="tab">我的提醒</a></li>
+                              <li><a href="#set" data-toggle="tab">我的地址</a></li>
                             </ul>
                             <div class="tab-content">
-                              <div id="index" class="tab-pane active">
-
-                              <div>
-                                <!--<button style="background-color: #F37B1D;color: #fff;width: 78px;height: 28px;border: 0px;border-radius: 3px;">进行中的商品</button>-->
-                                <!--<button style="background-color: #f8f8f8;color: #b1adad;width: 78px;height: 28px;border: 0px;border-radius: 3px;">已结束的商品</button>-->
-                              </div>
-
-                            <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
+                             <div id="index" class="tab-pane active">
+                                    <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
                                         <tr  style="background-color: #f8f8f8;" >
-                                            <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">宝贝名称</font></th>
-                                            <th  style="line-height:50px;margin-left:135px;" nowrap><font style="font-size: 14px; ">开拍时间</font></th>
-                                            <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">保证金</font></th>
-                                            <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">竞拍数量</font></th>
-                                            <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">获得数量</font></th>
-                                            <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">当前价格(元)</font></th>
-                                            <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">我的最高出价(元)</font></th>
-                                            <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">剩余时间</font></th>
-                                            <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                            <th  style="line-height:50px;margin-left:0px;" nowrap><font style="font-size: 14px; ">通知公告</font></th>
+                                            <th  style="line-height:50px;margin-left:0px;" nowrap><font style="font-size: 14px; ">通知公告</font></th>
+                                            <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">在售商品</font></th>
+                                            <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">在线订单</font></th>
                                         </tr>
                                         <tr >
+                                               <td style="font-size: 12px;">
+                                                   <span style="margin-left: 41px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    500
+                                                   </span>
+                                               </td>
+                                               <td style="font-size: 12px">
+                                                   <span style="margin-left:40px;">0</span>
+                                               </td>
+                                               <td style="font-size: 12px">
+                                                       <span style="margin-left: 40px;">0</span>
+                                               </td>
+                                               <td style="font-size: 12px">
+                                                   <span style="margin-left: 28px;">5300.00</span>
+                                               </td>
+                                               <td style="font-size: 12px"></td>
+                                        </tr>
+                                    </table>
+                              </div>
+                              <div id="profile" class="tab-pane">
+                                <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
+                                    <tr  style="background-color: #f8f8f8;" >
+                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">商品名称</font></th>
+                                        <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">商品价格</font></th>
+                                        <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">商品简介</font></th>
+                                        <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">商品分类</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">商品转卖原因</font></th>
+                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">发售时间</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                    </tr>
+                                    {{range $index, $elem := .Goods}}
+                                      {{if $elem.Id}}
+                                        <tr >
                                             <td style="padding: 20px;">
-                                            <img src="/static/user/img/我的拍卖/组-43.png" style="max-width: 100px;margin-left: ;" />
+                                            <img src="/{{$elem.Image}}" style="max-width: 80px;max-height: 80px;margin-left: ;" />
                                             </td>
                                             <td >
-                                                <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">冰雪翡翠花手镯59mm</p>
-                                            </td>
-                                            <td style="font-size: 12px">
-                                                2016-04-15
-                                                <br />
-                                                10:00:00
+                                                <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">{{$elem.Title}}</p>
                                             </td>
                                             <td style="font-size: 12px;">
-                                                <span style="margin-left: 41px;">500
-                                                <br /><span style="color: #F2873B;margin-left: 35px;"> 已支付</span>
+                                                <span style="margin-left: 41px;">{{$elem.Price}}
                                                 </span>
                                             </td>
                                             <td style="font-size: 12px">
-                                                <span style="margin-left:40px;">0</span>
+                                                <span style="margin-left:40px;">{{$elem.Desc}}</span>
                                             </td>
                                             <td style="font-size: 12px">
-                                                    <span style="margin-left: 40px;">0</span>
+                                                    <span style="margin-left: 40px;">{{$elem.CategoryName}}</span>
                                             </td>
                                             <td style="font-size: 12px">
-                                                <span style="margin-left: 28px;">5300.00</span>
+                                                <span style="margin-left: 28px;">{{$elem.Cause}}</span>
                                             </td>
-                                            <td style="font-size: 12px"></td>
-                                            <td style="font-size: 12px">
-                                                    <span style="margin-left: 34px;">3小时</span></td>
+                                            <td style="font-size: 12px">{{$elem.Add_time}}</td>
                                             <td style="font-size: 12px">
 
-                                                <span style="margin-left: 34px;">未报名</span>
+                                                <span style="margin-left: 34px;">{{$elem.Price}}</span>
                                                 <br />
                                                 <br />
-                                            <button style="font-size: 12px;margin-left: 34px;padding: 5px;border: 1px #ccc solid;">报名</button>
-                                            </td>
+                                             </td>
                                         </tr>
-
-                                    </table>
-
+                                     {{end}}
+                                  {{end}}
+                                </table>
                               </div>
-                              <div id="profile" class="tab-pane">
-                                <p></p>
-                              </div>
-
-
-
                               <div id="about" class="tab-pane">
-                                <p></p>
+                                <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
+                                    <tr  style="background-color: #f8f8f8;" >
+                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">宝贝名称</font></th>
+                                        <th  style="line-height:50px;margin-left:135px;" nowrap><font style="font-size: 14px; ">开拍时间</font></th>
+                                        <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">保证金</font></th>
+                                        <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">竞拍数量</font></th>
+                                        <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">获得数量</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">当前价格(元)</font></th>
+                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">我的最高出价(元)</font></th>
+                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">剩余时间</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                    </tr>
+                                    <tr >
+                                        <td style="padding: 20px;">
+                                        <img src="/static/user/img/我的拍卖/组-43.png" style="max-width: 100px;margin-left: ;" />
+                                        </td>
+                                        <td >
+                                            <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">冰雪翡翠花手镯59mm</p>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                            2016-04-15
+                                            <br />
+                                            10:00:00
+                                        </td>
+                                        <td style="font-size: 12px;">
+                                            <span style="margin-left: 41px;">500
+                                            <br /><span style="color: #F2873B;margin-left: 35px;"> 已支付</span>
+                                            </span>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                            <span style="margin-left:40px;">0</span>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                                <span style="margin-left: 40px;">0</span>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                            <span style="margin-left: 28px;">5300.00</span>
+                                        </td>
+                                        <td style="font-size: 12px"></td>
+                                        <td style="font-size: 12px">
+                                                <span style="margin-left: 34px;">3小时</span></td>
+                                        <td style="font-size: 12px">
+
+                                            <span style="margin-left: 34px;">未报名</span>
+                                            <br />
+                                            <br />
+                                        <button style="font-size: 12px;margin-left: 34px;padding: 5px;border: 1px #ccc solid;">报名</button>
+                                        </td>
+                                    </tr>
+                                </table>
                               </div>
-
-
-
-
                                <div id="tixing" class="tab-pane">
                                 <p></p>
                                 <form action="/user/goods" method="post" enctype="multipart/form-data">
@@ -382,8 +361,56 @@
                               </div>
 
                                <div id="set" class="tab-pane">
-                                <p>
-                                    </p>
+                                <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
+                                    <tr  style="background-color: #f8f8f8;" >
+                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">宝贝名称</font></th>
+                                        <th  style="line-height:50px;margin-left:135px;" nowrap><font style="font-size: 14px; ">开拍时间</font></th>
+                                        <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">保证金</font></th>
+                                        <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">竞拍数量</font></th>
+                                        <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">获得数量</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">当前价格(元)</font></th>
+                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">我的最高出价(元)</font></th>
+                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">剩余时间</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                    </tr>
+                                    <tr >
+                                        <td style="padding: 20px;">
+                                        <img src="/static/user/img/我的拍卖/组-43.png" style="max-width: 100px;margin-left: ;" />
+                                        </td>
+                                        <td >
+                                            <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">冰雪翡翠花手镯59mm</p>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                            2016-04-15
+                                            <br />
+                                            10:00:00
+                                        </td>
+                                        <td style="font-size: 12px;">
+                                            <span style="margin-left: 41px;">500
+                                            <br /><span style="color: #F2873B;margin-left: 35px;"> 已支付</span>
+                                            </span>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                            <span style="margin-left:40px;">0</span>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                                <span style="margin-left: 40px;">0</span>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                            <span style="margin-left: 28px;">5300.00</span>
+                                        </td>
+                                        <td style="font-size: 12px"></td>
+                                        <td style="font-size: 12px">
+                                                <span style="margin-left: 34px;">3小时</span></td>
+                                        <td style="font-size: 12px">
+
+                                            <span style="margin-left: 34px;">未报名</span>
+                                            <br />
+                                            <br />
+                                        <button style="font-size: 12px;margin-left: 34px;padding: 5px;border: 1px #ccc solid;">报名</button>
+                                        </td>
+                                    </tr>
+                                </table>
                               </div>
                         </div>
                     </div>

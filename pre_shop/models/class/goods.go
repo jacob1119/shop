@@ -18,7 +18,28 @@ type Goods struct {
 	Modify_time  int64
 	Username     string
 	Origin_price string
+	Image        string
+	CategoryName string
 }
+
+// 完成User类型定义
+type GoodShow struct {
+	Id           int // 设置为主键，字段Id, Password首字母必须大写
+	Title        string
+	Cause        string
+	Price        string
+	Desc         string
+	Category     int
+	Deal         int
+	Add_time     int64
+	Modify_time  int64
+	Username     string
+	Origin_price string
+	Image        string
+	CategoryName string
+}
+
+
 
 func (g *Goods) Create() (id int64, err error) {
 	o := orm.NewOrm()

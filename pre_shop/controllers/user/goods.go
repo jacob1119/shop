@@ -66,8 +66,10 @@ func (g *GoodsController) Sell() {
 			return
 		}
 	}
-	username := g.GetSession("uid")
+	username := g.GetSession("username")
+	username = "jacob"
 	fmt.Sprintf("%x", username)
+
 	goods := &class.Goods{
 		Title:        title,
 		Cause:        cause,

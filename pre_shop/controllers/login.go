@@ -6,7 +6,6 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
-	"shop/pre_shop/models/class"
 )
 
 type LoginController struct {
@@ -32,15 +31,18 @@ func (c *LoginController) Login() {
 	hash := md5.Sum([]byte(password))
 	password = fmt.Sprintf("%x", hash)
 	fmt.Println(username,password)
-	// 操作数据库，查看手机号，邮箱，用户名是否重复
-	var user class.User
-	err := orm.NewOrm().QueryTable("user").Filter("Username", username).Filter("Password",password).Limit(1).One(&user)
-	if err == nil {
+	// 操作数据库
+	//var user class.User
+	//err := orm.NewOrm().QueryTable("user").Filter("Username", username).Filter("Password",password).Limit(1).One(&user)
 
+	var lists []orm.ParamsList
+	num,err := orm.NewOrm().Raw("select * from user where username= ? and password= ?",username,password).ValuesList(&lists)
+	if err == nil || num < 0 {
 		// 设置session
-		c.SetSession("uid",username)
+		c.SetSession("uid",lists[0][0])
+		c.SetSession("username",lists[0][1])
 
-		u := c.GetSession("uid")
+		u := c.GetSession("username")
 		fmt.Sprintf("%x", u)
 		c.Data["Tips"] = "尊敬的"+ u.(string) +"您好，您已经成功登录"
 		c.TplName = "welcome.tpl"

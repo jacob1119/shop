@@ -17,3 +17,14 @@ func (u *User) ReadDB1() (err error) {
 	return err
 }
 
+//func (u *User) GetCategoryName (res string) {
+//	var categoryList []orm.ParamsList
+//	num,err := orm.NewOrm().Raw("select * from goods_category").ValuesList(&categoryList)
+//
+//	if err == nil || num >0 {
+//		fmt.Println(categoryList)
+//	}
+//
+//
+//
+//}
