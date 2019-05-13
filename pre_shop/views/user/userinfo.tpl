@@ -106,58 +106,27 @@
                         <dl class="side-menu-tree" style="padding-left: 30px;">
                             <dt><img src="/static/user/img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>作为卖家</dt>
                             <dd>
-                                <a>在售商品</a>
-
+                                <a href="#profile" data-toggle="tab">我的发售</a>
                             </dd>
                             <dd>
-                                <a>我的收藏</a>
-
+                                <a href="#tixing" data-toggle="tab">发售商品</a>
                             </dd>
                             <dd>
-                                <a>我的评价</a>
-
-                            </dd>
-                            <dd>
-                                <a>我的足迹</a>
-
-                            </dd>
-                            <dd>
-                                <a style="color:#f70">我的拍卖</a>
-
-                            </dd>
-                            <dd>
-                                <a>我的优惠券</a>
-
+                                <a>商品评价</a>
                             </dd>
                             <dt><img src="/static/user/img/左侧/我的买啦.png"  style="margin-right: 10px;margin-left: -20px;"/>作为买家</dt>
                             <dd>
-                                <a>我的推荐</a>
-
+                                <a>我的购买</a>
                             </dd>
                             <dd>
-                                <a>我的钱包</a>
-
-                            </dd>
-                            <dd>
-                                <a>我要提现</a>
-
-                            </dd>
-                            <dd>
-                                <a>我的买豆</a>
-
-                            </dd>
-                            <dd>
-                                <a>邀请管理</a>
-
+                                <a>我的订单</a>
                             </dd>
                             <dt><img src="/static/user/img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>其他</dt>
                             <dd>
-                                <a >退换货</a>
-
+                                <a >我的个人信息</a>
                             </dd>
                             <dd>
-                                <a>意见/投诉</a>
-
+                                <a>我的地址</a>
                             </dd>
                         </dl>
 

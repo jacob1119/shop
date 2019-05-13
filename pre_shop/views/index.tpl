@@ -72,8 +72,8 @@
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li><a href="index">首页</a></li>
-                    <li class="active"><a href="about">关于</a></li>
+			    	<li class="active"><a href="index">首页</a></li>
+                    <li><a href="about">关于</a></li>
                     <li><a href="delivery">物流</a></li>
                     <li><a href="news">上新</a></li>
                     <li><a href="contact">联系我们</a></li>
@@ -104,49 +104,49 @@
 					 	 <div class="slider">					     
 							 <div id="slider">
 			                    <div id="mover">
-			                    	<div id="slide-1" class="slide">			                    
+			                    	<div id="slide-1" class="slide">
 									 <div class="slider-img">
-									     <a href="preview.html"><img src="/static/images/slide-1-image.png" alt="learn more" /></a>
+									     <a href="preview.html"><img src="/static/upload/images/ea0402857fd1189fc08251039a1ab4f9.png" alt="learn more" /></a>
 									  </div>
 						             	<div class="slider-text">
 		                                 <h1>精品推荐<br><span>9成新</span></h1>
 		                                 <h2>物美价廉</h2>
 									   <div class="features_list">
-									   	<h4>精美飞利浦大音响</h4>
+									   	<h4>外观好看的音响</h4>
 							            </div>
 							             <a href="preview.html" class="button">现在购买</a>
-					                   </div>			               
-									  <div class="clear"></div>				
+					                   </div>
+									  <div class="clear"></div>
 				                  </div>	
 						             	<div class="slide">
 						             		<div class="slider-text">
 		                                 <h1>精品推荐<br><span>8成新</span></h1>
 		                                 <h2>物美价廉</h2>
 									   <div class="features_list">
-									   	<h4>Get to Know More About Our Memorable Services</h4>							               
+									   	<h4>大彩电低价出售</h4>
 							            </div>
 							             <a href="preview.html" class="button">Shop Now</a>
-					                   </div>		
+					                   </div>
 						             	 <div class="slider-img">
-									     <a href="preview.html"><img src="/static/images/slide-3-image.jpg" alt="learn more" /></a>
-									  </div>						             					                 
-									  <div class="clear"></div>				
+									     <a href="preview.html"><img src="/static/upload/images/6bcd58043eb4d4c856fcb4bce7c0fa16.jpg" alt="learn more" /></a>
+									  </div>
+									  <div class="clear"></div>
 				                  </div>
-				                  <div class="slide">						             	
+				                  <div class="slide">
 					                  <div class="slider-img">
-									     <a href="preview.html"><img src="/static/images/slide-2-image.jpg" alt="learn more" /></a>
+									     <a href="preview.html"><img src="/static/upload/images/a2d2d2b63a7d88e928b1e6c45f1d7c1c.jpg" alt="learn more" /></a>
 									  </div>
 									  <div class="slider-text">
-		                                 <h1>Clearance<br><span>SALE</span></h1>
-		                                 <h2>UPTo 10% OFF</h2>
+		                                 <h1>低价<br><span>出售</span></h1>
+		                                 <h2>精美推荐</h2>
 									   <div class="features_list">
-									   	<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>							               
+									   	<h4>超薄27寸电视</h4>
 							            </div>
 							             <a href="preview.html" class="button">Shop Now</a>
-					                   </div>	
-									  <div class="clear"></div>				
-				                  </div>												
-			                 </div>		
+					                   </div>
+									  <div class="clear"></div>
+				                  </div>
+			                 </div>
 		                </div>
 					 <div class="clear"></div>					       
 		         </div>
@@ -166,40 +166,14 @@
     		<div class="clear"></div>
     	</div>
 	      <div class="section group">
+            {{range $index, $elem := .Goods1}}
+               {{if $elem.Id}}
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="/static/images/feature-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
+					 <a href="preview.html"><img style="height:300px;width:300px;" src="/{{$elem.Image}}" alt="" /></a>
+					 <h2>{{$elem.Title}} </h2>
 					<div class="price-details">
 				       <div class="price-number">
-							<p><span class="rupees">$620.87</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-					 
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="/static/images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$899.75</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				    
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="/static/images/feature-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$599.00</span></p>
+							<p><span class="rupees">{{$elem.Price}}¥</span></p>
 					    </div>
 					       		<div class="add-cart">								
 									<h4><a href="preview.html">Add to Cart</a></h4>
@@ -207,19 +181,9 @@
 							 <div class="clear"></div>
 					</div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="/static/images/feature-pic4.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$679.87</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>				     
-				</div>
+            {{end}}
+            {{end}}
+
 			</div>
 			<div class="content_bottom">
     		<div class="heading">
@@ -230,59 +194,25 @@
     		</div>
     		<div class="clear"></div>
     	</div>
+
 			<div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="/static/images/new-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$849.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="/static/images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$599.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="/static/images/new-pic4.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$799.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <a href="preview.html"><img src="/static/images/new-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$899.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
+				{{range $index, $elem := .Goods2}}
+				{{if $elem.Id}}
+                    <div class="grid_1_of_4 images_1_of_4">
+                         <a href="preview.html"><img style="height:300px;width:300px;" src="/{{$elem.Image}}" alt="" /></a>
+                         <h2>{{$elem.Title}} </h2>
+                        <div class="price-details">
+                           <div class="price-number">
+                                <p><span class="rupees">{{$elem.Price}}¥</span></p>
+                            </div>
+                                    <div class="add-cart">
+                                        <h4><a href="preview.html">Add to Cart</a></h4>
+                                     </div>
+                                 <div class="clear"></div>
+                        </div>
+                    </div>
+                {{end}}
+            {{end}}
 			</div>
     </div>
  </div>
