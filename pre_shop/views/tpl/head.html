@@ -13,14 +13,17 @@
     <div class="header">
         <div class="headertop_desc">
             <div class="call">
-                <p><span>需要帮助?</span> 拨打 <span class="number">1-22-3456789</span></span></p>
+                <p><span>需要帮助?</span> 拨打 <span class="number">13148241119</span></span></p>
             </div>
             <div class="account_desc">
                 <ul>
-                    <li><a href="/register">注册</a></li>
-                    <li><a href="/login">登录</a></li>
-                    <li><a href="delivery.html">物流</a></li>
-                    <li><a href="#">结算</a></li>
+                    {{if .Is_login}}
+                        <li>WelCome<a href="/user/info">{{.Username}}</a></li>
+                    {{else}}
+                        <li><a href="/register">注册</a></li>
+                        <li><a href="/login">登录</a></li>
+                    {{end}}
+                    <li><a href="/delivery">物流</a></li>
                     <li><a href="/user/info">个人中心</a></li>
                 </ul>
             </div>
@@ -31,7 +34,7 @@
                 <a href="/index"><img src="/static/images/logo.png" alt="" /></a>
             </div>
             <div class="cart">
-                <p> <span>购物车:</span><div id="dd" class="wrapper-dropdown-2"> 0 个商品 - ¥0.00
+                <p> <span><a href="/cart/show">购物车</a>:</span><div id="dd" class="wrapper-dropdown-2"> {{.Cart_count}} 个商品
                     <ul class="dropdown">
                         <li>没有商品</li>
                     </ul></div></p>
@@ -70,10 +73,10 @@
             <div class="menu">
                 <ul>
                     <li><a href="/index">首页</a></li>
-                    <li class="active"><a href="about">关于</a></li>
-                    <li><a href="delivery">物流</a></li>
-                    <li><a href="news">上新</a></li>
-                    <li><a href="contact">联系我们</a></li>
+                    <li><a href="/goods/list">商品列表</a></li>
+                    <li><a href="/delivery">物流</a></li>
+                    <li><a href="/contact">联系我们</a></li>
+                    <li><a href="/about">关于此平台</a></li>
                     <div class="clear"></div>
                 </ul>
             </div>

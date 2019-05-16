@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
 	"shop/pre_shop/models/class"
 	"strings"
@@ -118,4 +119,58 @@ func (g *GoodsController) Sell() {
 		g.TplName = "bad.tpl"
 		return
 	}
+}
+
+func (g *GoodsController) Cart() {
+	username := g.GetSession("username")
+	//uid := u.GetSession("uid")
+	if username == nil {
+		//fmt.Println(username)
+		g.Data["Tips"] = "您还未登陆"
+		g.TplName = "bad.tpl"
+		return
+	}
+
+	title := g.GetString("title")
+	price := g.GetString("price")
+	goodsId, _ := g.GetInt("id")
+	if goodsId < 1 {
+		g.Data["Tips"] = "系统出现错误"
+		g.TplName = "bad.tpl"
+		return
+	}
+
+	var lists []orm.ParamsList
+	num,_ := orm.NewOrm().Raw("select * from cart where username= ? and goods_id= ?",username,goodsId).ValuesList(&lists)
+	fmt.Println(num)
+
+	if num > 0 {
+		g.Data["Tips"] = "此商品已经加入了购物车"
+		g.TplName = "bad.tpl"
+		return
+	}
+
+
+	cart := &class.Cart{
+		Goods_id: goodsId,
+		Title:    title,
+		Price:    price,
+		Username: username.(string),
+	}
+
+	lastInsertId, err := cart.Create()
+	if err != nil {
+		fmt.Println(err)
+		g.Data["Tips"] = "商品写入数据库失败"
+		g.TplName = "bad.tpl"
+		return
+	} else {
+		fmt.Println(lastInsertId)
+		g.Data["Tips"] = "商品已经加入购物车"
+		g.TplName = "bad.tpl"
+	}
+
+
+	fmt.Println(cart)
+	fmt.Println(title, price, goodsId)
 }

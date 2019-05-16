@@ -16,12 +16,12 @@ func (u *UserController) Get() {
 
 	username := u.GetSession("username")
 	//uid := u.GetSession("uid")
-	//if username == nil {
-	//	fmt.Println(username)
-	//	u.Data["Tips"] = "请登录"
-	//	u.TplName = "bad.tpl"
-	//	return
-	//}
+	if username == nil {
+		fmt.Println(username)
+		u.Data["Tips"] = "请登录"
+		u.TplName = "bad.tpl"
+		return
+	}
 
 	// 数据库中取出商品分类
 	o := orm.NewOrm()
@@ -36,7 +36,7 @@ func (u *UserController) Get() {
 	for index, value := range category {
 		cat[index+1] = value[1]
 	}
-	username = "jacob"
+	//username = "jacob"
 	// 取出我的发售
 	var lists []orm.ParamsList
 	num, err := orm.NewOrm().Raw("select * from goods where username= ? limit 0,5", username).ValuesList(&lists)
@@ -75,18 +75,8 @@ func (u *UserController) Get() {
 
 		g[i] = goo
 	}
-	fmt.Println(g)
+	//fmt.Println(g)
 
-
-
-
-
-
-
-
-
-
-	
 	u.Data["Goods"] = g
 	u.Data["Cat"] = cat
 	u.Data["Username"] = username

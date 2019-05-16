@@ -48,3 +48,8 @@ func (g *Goods) Create() (id int64, err error) {
 	id, err = o.Insert(g)
 	return id, err
 }
+func (g *Goods) ReadDB() (err error) {
+	o := orm.NewOrm()
+	err = o.Read(g)
+	return err
+}

@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"shop/pre_shop/models/class"
@@ -19,7 +18,7 @@ func (c *IndexController) Get() {
 	_, err := o.QueryTable("goods_category").ValuesList(&category, "id", "name")
 
 	if err == nil {
-		fmt.Println("aaaaerror")
+		//fmt.Println("aaaaerror")
 	}
 
 	var cat [20] interface{}
@@ -72,8 +71,21 @@ func (c *IndexController) Get() {
 
 
 	}
-	//fmt.Println(g)
 
+	var count int64
+	count = 0
+	username := c.GetSession("username")
+	// 取出购物车中商品
+	if username != nil {
+		var lists []orm.ParamsList
+		num,_ := orm.NewOrm().Raw("select * from cart where username= ? ",username).ValuesList(&lists)
+		count = num
+
+		c.Data["Is_login"] = true
+		c.Data["Username"] = username
+	}
+
+	c.Data["Cart_count"] = count
 	c.Data["Goods1"] = g
 	c.Data["Goods2"] = g2
 	c.Data["Cat"] = cat

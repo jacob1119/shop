@@ -36,10 +36,12 @@ func (c *LoginController) Login() {
 	//err := orm.NewOrm().QueryTable("user").Filter("Username", username).Filter("Password",password).Limit(1).One(&user)
 
 	var lists []orm.ParamsList
-	num,err := orm.NewOrm().Raw("select * from user where username= ? and password= ?",username,password).ValuesList(&lists)
-	if err == nil || num < 0 {
+	num,_ := orm.NewOrm().Raw("select * from user where username= ? and password= ?",username,password).ValuesList(&lists)
+	fmt.Println(lists)
+	//os.Exit(0)
+	if  num > 0 {
 		// 设置session
-		c.SetSession("uid",lists[0][0])
+		//c.SetSession("uid",lists[0][0])
 		c.SetSession("username",lists[0][1])
 
 		u := c.GetSession("username")
