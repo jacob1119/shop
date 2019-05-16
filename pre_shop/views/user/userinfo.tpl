@@ -144,30 +144,30 @@
                               <li><a href="#profile" data-toggle="tab">我的发售</a></li>
                               <li><a href="#about" data-toggle="tab">我的购买</a></li>
                               <li><a href="#tixing" data-toggle="tab">发售商品</a></li>
-                              <li><a href="#set" data-toggle="tab">我的地址</a></li>
+                              <li><a href="#set" data-toggle="tab">购买我的</a></li>
                             </ul>
                             <div class="tab-content">
                              <div id="index" class="tab-pane active">
                                     <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
                                         <tr  style="background-color: #f8f8f8;" >
-                                            <th  style="line-height:50px;margin-left:0px;" nowrap><font style="font-size: 14px; ">通知公告</font></th>
-                                            <th  style="line-height:50px;margin-left:0px;" nowrap><font style="font-size: 14px; ">通知公告</font></th>
-                                            <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">在售商品</font></th>
+                                            <th  style="line-height:50px;margin-left:-10px;" nowrap><font style="font-size: 14px; ">消息通知</font></th>
+                                            <th  style="line-height:50px;margin-left:0px;" nowrap><font style="font-size: 14px; ">发售商品数</font></th>
+                                            <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">购买商品数</font></th>
                                             <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">在线订单</font></th>
                                         </tr>
                                         <tr >
                                                <td style="font-size: 12px;">
-                                                   <span style="margin-left: 41px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <span style="margin-left: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     500
                                                    </span>
                                                </td>
                                                <td style="font-size: 12px">
                                                    <span style="margin-left:40px;">0</span>
                                                </td>
-                                               <td style="font-size: 12px">
-                                                       <span style="margin-left: 40px;">0</span>
+                                               <td style="margin-left: 200px;font-size: 12px">
+                                                       <span style="margin-left: 150px;">0</span>
                                                </td>
-                                               <td style="font-size: 12px">
+                                               <td style="margin-left: 200px;font-size: 12px">
                                                    <span style="margin-left: 28px;">5300.00</span>
                                                </td>
                                                <td style="font-size: 12px"></td>
@@ -184,6 +184,7 @@
                                         <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">商品转卖原因</font></th>
                                         <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">发售时间</font></th>
                                         <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">删除</font></th>
                                     </tr>
                                     {{range $index, $elem := .Goods}}
                                       {{if $elem.Id}}
@@ -192,7 +193,7 @@
                                             <img src="/{{$elem.Image}}" style="max-width: 80px;max-height: 80px;margin-left: ;" />
                                             </td>
                                             <td >
-                                                <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">{{$elem.Title}}</p>
+                                                <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;"><a href="/preview?id={{$elem.Id}}" target="new">{{$elem.Title}}</a></p>
                                             </td>
                                             <td style="font-size: 12px;">
                                                 <span style="margin-left: 41px;">{{$elem.Price}}
@@ -207,12 +208,18 @@
                                             <td style="font-size: 12px">
                                                 <span style="margin-left: 28px;">{{$elem.Cause}}</span>
                                             </td>
-                                            <td style="font-size: 12px">{{$elem.Add_time}}</td>
+                                            <td style="font-size: 12px">{{$elem.Time_string}}</td>
                                             <td style="font-size: 12px">
-
-                                                <span style="margin-left: 34px;">{{$elem.Price}}</span>
+                                                {{if $elem.Sold}}
+                                                <span style="margin-left: 34px;">已经出售</span>
+                                                {{else}}
+                                                <span style="margin-left: 34px;">未售出</span>
+                                                {{end}}
                                                 <br />
                                                 <br />
+                                             </td>
+                                             <td style="font-size: 12px">
+                                                 <span style="margin-left: 28px;"><a href="/goods/del?id={{$elem.Id}}&title={{$elem.Title}}">删除</a></span>
                                              </td>
                                         </tr>
                                      {{end}}
@@ -222,53 +229,47 @@
                               <div id="about" class="tab-pane">
                                 <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
                                     <tr  style="background-color: #f8f8f8;" >
-                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">宝贝名称</font></th>
-                                        <th  style="line-height:50px;margin-left:135px;" nowrap><font style="font-size: 14px; ">开拍时间</font></th>
-                                        <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">保证金</font></th>
-                                        <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">竞拍数量</font></th>
-                                        <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">获得数量</font></th>
-                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">当前价格(元)</font></th>
-                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">我的最高出价(元)</font></th>
-                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">剩余时间</font></th>
-                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">商品名称</font></th>
+                                            <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">商品价格</font></th>
+                                            <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">下单时间</font></th>
+                                            <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">卖方</font></th>
+                                            <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                            <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">删除</font></th>
+                                            <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">联系卖家</font></th>
                                     </tr>
-                                    <tr >
-                                        <td style="padding: 20px;">
-                                        <img src="/static/user/img/我的拍卖/组-43.png" style="max-width: 100px;margin-left: ;" />
-                                        </td>
-                                        <td >
-                                            <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">冰雪翡翠花手镯59mm</p>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                            2016-04-15
-                                            <br />
-                                            10:00:00
-                                        </td>
-                                        <td style="font-size: 12px;">
-                                            <span style="margin-left: 41px;">500
-                                            <br /><span style="color: #F2873B;margin-left: 35px;"> 已支付</span>
-                                            </span>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                            <span style="margin-left:40px;">0</span>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                                <span style="margin-left: 40px;">0</span>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                            <span style="margin-left: 28px;">5300.00</span>
-                                        </td>
-                                        <td style="font-size: 12px"></td>
-                                        <td style="font-size: 12px">
-                                                <span style="margin-left: 34px;">3小时</span></td>
-                                        <td style="font-size: 12px">
-
-                                            <span style="margin-left: 34px;">未报名</span>
-                                            <br />
-                                            <br />
-                                        <button style="font-size: 12px;margin-left: 34px;padding: 5px;border: 1px #ccc solid;">报名</button>
-                                        </td>
-                                    </tr>
+                                    {{range $index, $elem := .MyOrder}}
+                                          {{if $elem.Id}}
+                                            <tr >
+                                                <td style="padding: 20px;">
+                                                <img src="/{{$elem.Url}}" style="max-width: 80px;max-height: 80px;margin-left: ;" />
+                                                </td>
+                                                <td >
+                                                    <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;"><a href="/preview?id={{$elem.Goods_id}}" target="new">{{$elem.Title}}</a></p>
+                                                </td>
+                                                <td style="font-size: 12px;">
+                                                    <span style="margin-left: 41px;">{{$elem.Price}}
+                                                    </span>
+                                                </td>
+                                                <td style="font-size: 12px">{{$elem.Str_time}}</td>
+                                                <td style="font-size: 12px">{{$elem.Boss}}</td>
+                                                <td style="font-size: 12px">
+                                                    {{if $elem.Status}}
+                                                    <span style="margin-left: 34px;">卖家已确认</span>
+                                                    {{else}}
+                                                    <span style="margin-left: 34px;">卖家未确认</span>
+                                                    {{end}}
+                                                    <br />
+                                                    <br />
+                                                 </td>
+                                                 <td style="font-size: 12px">
+                                                     <span style="margin-left: 28px;"><a href="/order/del?id={{$elem.Id}}&gid={{$elem.Goods_id}}&title={{$elem.Title}}">撤单</a></span>
+                                                 </td>
+                                                 <td style="font-size: 12px">
+                                                      <span style="margin-left: 28px;"><a href="/goods/contact?id={{$elem.Id}}&title={{$elem.Title}}">联系卖方</a></span>
+                                                  </td>
+                                            </tr>
+                                         {{end}}
+                                      {{end}}
                                 </table>
                               </div>
                                <div id="tixing" class="tab-pane">

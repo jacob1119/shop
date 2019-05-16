@@ -37,7 +37,7 @@ func (c *LoginController) Login() {
 
 	var lists []orm.ParamsList
 	num,_ := orm.NewOrm().Raw("select * from user where username= ? and password= ?",username,password).ValuesList(&lists)
-	fmt.Println(lists)
+	//fmt.Println(lists)
 	//os.Exit(0)
 	if  num > 0 {
 		// 设置session

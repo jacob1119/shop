@@ -112,7 +112,7 @@ func (c *PreviewController) Get() {
 	// 取出购物车中商品
 	if username != nil {
 		var lists []orm.ParamsList
-		num, _ := orm.NewOrm().Raw("select * from cart where username= ? ", username).ValuesList(&lists)
+		num, _ := orm.NewOrm().Raw("select * from cart where is_order=0 and username= ? ", username).ValuesList(&lists)
 		count = num
 
 		c.Data["Is_login"] = true

@@ -24,11 +24,11 @@ func (c *CartController) Get() {
 
 	// 获取商品总数
 	var number []orm.ParamsList
-	_, _ = orm.NewOrm().Raw("select count(*) from cart where username= ? ", username).ValuesList(&number)
+	_, _ = orm.NewOrm().Raw("select count(*) from cart where is_order=0 and username= ? ", username).ValuesList(&number)
 
 	count, _ := strconv.Atoi(number[0][0].(string))
 	if count < 1 {
-		c.Data["Tips"] = "Wows  没有数据"
+		c.Data["Tips"] = "Wows  购物车为空"
 		c.TplName = "bad.tpl"
 		return
 	}
@@ -40,7 +40,7 @@ func (c *CartController) Get() {
 
 	// 取出我的发售
 	var lists []orm.ParamsList
-	num, err := orm.NewOrm().Raw("select * from cart where username= ? order by add_time desc limit ?,12 ", username, (page-1)*size).ValuesList(&lists)
+	num, err := orm.NewOrm().Raw("select * from cart where is_order=0 and username= ? order by add_time desc limit ?,12 ", username, (page-1)*size).ValuesList(&lists)
 
 	if err != nil || num < 0 {
 		c.Data["Tips"] = "Wows  商品走丢了"
@@ -88,7 +88,7 @@ func (c *CartController) Get() {
 	// 取出购物车中商品
 	if username != nil {
 		var lists []orm.ParamsList
-		num, _ := orm.NewOrm().Raw("select * from cart where username= ? ", username).ValuesList(&lists)
+		num, _ := orm.NewOrm().Raw("select * from cart where is_order=0 and username= ? ", username).ValuesList(&lists)
 		count1 = num
 
 		c.Data["Is_login"] = true

@@ -6,6 +6,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"shop/pre_shop/models/class"
 	"strconv"
+	"time"
 )
 
 type UserController struct {
@@ -36,10 +37,10 @@ func (u *UserController) Get() {
 	for index, value := range category {
 		cat[index+1] = value[1]
 	}
-	//username = "jacob"
+
 	// 取出我的发售
 	var lists []orm.ParamsList
-	num, err := orm.NewOrm().Raw("select * from goods where username= ? limit 0,5", username).ValuesList(&lists)
+	num, err := orm.NewOrm().Raw("select * from goods where username= ? order by add_time desc", username).ValuesList(&lists)
 
 	var g [10]class.Goods
 	var i int64
@@ -50,6 +51,9 @@ func (u *UserController) Get() {
 		deal, _ := strconv.Atoi(lists[i][7].(string))
 		atime, _ := strconv.ParseInt(lists[i][8].(string), 10, 64)
 		mtime, _ := strconv.ParseInt(lists[i][9].(string), 10, 64)
+
+		timeLayout := "2006-01-02 15:04:05"
+		dataTimeStr := time.Unix(atime, 0).Format(timeLayout)
 
 		var imgUrl []orm.ParamsList
 		_, err = orm.NewOrm().Raw("select img_url from image where goods_id= ? ", id).ValuesList(&imgUrl)
@@ -71,14 +75,67 @@ func (u *UserController) Get() {
 			Origin_price: lists[i][11].(string),
 			Image:        url,
 			CategoryName: categoryName,
+			Time_string:  dataTimeStr,
 		}
 
 		g[i] = goo
 	}
 	//fmt.Println(g)
 
-	u.Data["Goods"] = g
-	u.Data["Cat"] = cat
+	// 取出通知消息
+
+
+
+
+	// 取出我的购买
+	var myShop []orm.ParamsList
+	num, err = orm.NewOrm().Raw("select * from `order` where username= ? ", username).ValuesList(&myShop)
+
+	var myOrder [10]class.Order
+
+	if num > 0 {
+		var i int64
+		for i = 0; i < num; i++ {
+
+			id, _ := strconv.Atoi(myShop[i][0].(string))
+			goods_id,_ := strconv.Atoi(myShop[i][1].(string))
+			status,_ := strconv.Atoi(myShop[i][7].(string))
+			atime, _ := strconv.ParseInt(myShop[i][5].(string), 10, 64)
+			timeLayout := "2006-01-02 15:04:05"
+			dataTimeStr := time.Unix(atime, 0).Format(timeLayout)
+
+			var imgUrl []orm.ParamsList
+			_, err = orm.NewOrm().Raw("select img_url from image where goods_id= ? ", goods_id).ValuesList(&imgUrl)
+			url := imgUrl[0][0].(string)
+
+			var bossUsername []orm.ParamsList
+			_, err = orm.NewOrm().Raw("select username from goods where id= ? ", goods_id).ValuesList(&bossUsername)
+
+			//fmt.Println(bossUsername)
+			bossName := bossUsername[0][0].(string)
+			//bossName := "jacob"
+
+			myOrd := class.Order{
+				Id :      id,
+				Goods_id :goods_id,
+				Username :myShop[i][2].(string),
+				Title   : myShop[i][3].(string),
+				Price   : myShop[i][4].(string),
+				Url     : url,
+				Status :status,
+				Str_time:dataTimeStr,
+				Boss:bossName,
+			}
+
+			myOrder[i] = myOrd
+		}
+	}
+
+	//fmt.Println(myOrder)
+
+	u.Data["MyOrder"] = myOrder // 我的购买
+	u.Data["Goods"] = g         // 我的发售
+	u.Data["Cat"] = cat			// 分类
 	u.Data["Username"] = username
 	u.Data["Title"] = "个人中心"
 	u.Data["Website"] = "beego.me"

@@ -19,6 +19,6 @@ import(
 func init(){
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", "root:Guoyage1234!@tcp(localhost:3306)/shop?charset=utf8")
-	orm.RegisterModel(new(class.User),new(class.Goods_category),new(class.Goods),new(class.Image),new(class.Cart)) // 注册模型，建立User类型对象，注册模型时，需要引入包
+	orm.RegisterModel(new(class.User),new(class.Goods_category),new(class.Goods),new(class.Image),new(class.Cart),new(class.Order)) // 注册模型，建立User类型对象，注册模型时，需要引入包
 	orm.RunSyncdb("default", false, false)
 }

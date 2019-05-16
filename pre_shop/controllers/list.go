@@ -14,7 +14,7 @@ type ListController struct {
 func (l *ListController) Get() {
 	// 获取商品总数
 	var number []orm.ParamsList
-	_, _ = orm.NewOrm().Raw("select count(*) from goods ").ValuesList(&number)
+	_, _ = orm.NewOrm().Raw("select count(*) from goods where sold=0 ").ValuesList(&number)
 
 	count, _ := strconv.Atoi(number[0][0].(string))
 	if count < 1 {
@@ -30,7 +30,7 @@ func (l *ListController) Get() {
 
 	// 取出我的发售
 	var lists []orm.ParamsList
-	num, err := orm.NewOrm().Raw( "select * from goods order by add_time desc limit ?,12 " ,(page-1)*size).ValuesList(&lists)
+	num, err := orm.NewOrm().Raw( "select * from goods where sold=0 order by add_time desc limit ?,12 " ,(page-1)*size).ValuesList(&lists)
 
 	if err != nil || num < 0 {
 		l.Data["Tips"] = "Wows  商品走丢了"
@@ -95,7 +95,7 @@ func (l *ListController) Category() {
 	category,_ := l.GetInt("category")
 	// 获取商品总数
 	var number []orm.ParamsList
-	_, _ = orm.NewOrm().Raw("select count(*) from goods where category= ? " , category).ValuesList(&number)
+	_, _ = orm.NewOrm().Raw("select count(*) from goods where sold=0 and category= ? " , category).ValuesList(&number)
 
 	count, _ := strconv.Atoi(number[0][0].(string))
 	if count < 1 {
@@ -167,7 +167,7 @@ func (l *ListController) Category() {
 	// 取出购物车中商品
 	if username != nil {
 		var lists []orm.ParamsList
-		num,_ := orm.NewOrm().Raw("select * from cart where username= ? ",username).ValuesList(&lists)
+		num,_ := orm.NewOrm().Raw("select * from cart where is_order=0 and username= ? ",username).ValuesList(&lists)
 		count1 = num
 
 		l.Data["Is_login"] = true

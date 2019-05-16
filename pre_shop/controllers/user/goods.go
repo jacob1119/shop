@@ -156,6 +156,7 @@ func (g *GoodsController) Cart() {
 		Title:    title,
 		Price:    price,
 		Username: username.(string),
+		Add_time: time.Now().Unix(),
 	}
 
 	lastInsertId, err := cart.Create()
@@ -168,9 +169,34 @@ func (g *GoodsController) Cart() {
 		fmt.Println(lastInsertId)
 		g.Data["Tips"] = "商品已经加入购物车"
 		g.TplName = "bad.tpl"
+		return
+	}
+}
+
+func (g *GoodsController) Del() {
+	id,_ := g.GetInt("id")
+	title := g.GetString("title")
+
+	if id < 0 {
+		g.Data["Tips"] = "删除失败"
+		g.TplName = "bad.tpl"
+		return
 	}
 
+	goods := &class.Goods{
+		Id:id,
+	}
 
-	fmt.Println(cart)
-	fmt.Println(title, price, goodsId)
+	num,_ := goods.Del()
+
+	fmt.Println(num)
+	if num > 0 {
+		g.Data["Tips"] = title + " 已经被删除 "
+		g.TplName = "bad.tpl"
+		return
+	} else {
+		g.Data["Tips"] = title + " 删除失败 "
+		g.TplName = "bad.tpl"
+		return
+	}
 }

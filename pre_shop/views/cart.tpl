@@ -45,14 +45,14 @@
 				{{range $index, $elem := .Goods1}}
                    {{if $elem.Id}}
                     <div class="grid_1_of_4 images_1_of_4">
-                         <a href="/preview.html?id={{$elem.Id}}"><img style="height:300px;width:300px;" src="/{{$elem.Url}}" alt="" /></a>
+                         <a href="/preview.html?id={{$elem.Goods_id}}"><img style="height:300px;width:300px;" src="/{{$elem.Url}}" alt="" /></a>
                          <h2>{{$elem.Title}} </h2>
                         <div class="price-details">
                            <div class="price-number">
                                 <p><span class="rupees">{{$elem.Price}}¥</span></p>
                             </div>
                                     <div class="add-cart">
-                                        <h4><a href="/user/pay?id={{$elem.Goods_id}}">购买</a></h4>
+                                        <h4><a href="/user/pay?id={{$elem.Goods_id}}&title={{$elem.Title}}&price={{$elem.Price}}&cid={{$elem.Id}}">购买</a></h4>
                                      </div>
                                  <div class="clear"></div>
                         </div>
@@ -65,14 +65,14 @@
             {{range $index, $elem := .Goods2}}
                {{if $elem.Id}}
                 <div class="grid_1_of_4 images_1_of_4">
-                     <a href="/preview.html?id={{$elem.Id}}"><img style="height:300px;width:300px;" src="/{{$elem.Url}}" alt="" /></a>
+                     <a href="/preview.html?id={{$elem.Goods_id}}"><img style="height:300px;width:300px;" src="/{{$elem.Url}}" alt="" /></a>
                      <h2>{{$elem.Title}} </h2>
                     <div class="price-details">
                        <div class="price-number">
                             <p><span class="rupees">{{$elem.Price}}¥</span></p>
                         </div>
                                 <div class="add-cart">
-                                    <h4><a href="/user/pay?id={{$elem.Goods_id}}">购买</a></h4>
+                                    <h4><a href="/user/pay?id={{$elem.Goods_id}}&title={{$elem.Title}}&price={{$elem.Price}}&cid={{$elem.Id}}">购买</a></h4>
                                  </div>
                              <div class="clear"></div>
                     </div>
@@ -85,14 +85,14 @@
             {{range $index, $elem := .Goods3}}
                {{if $elem.Id}}
                 <div class="grid_1_of_4 images_1_of_4">
-                     <a href="/preview.html?id={{$elem.Id}}"><img style="height:300px;width:300px;" src="/{{$elem.Url}}" alt="" /></a>
+                     <a href="/preview.html?id={{$elem.Goods_id}}"><img style="height:300px;width:300px;" src="/{{$elem.Url}}&cid={{$elem.Id}}" alt="" /></a>
                      <h2>{{$elem.Title}} </h2>
                     <div class="price-details">
                        <div class="price-number">
                             <p><span class="rupees">{{$elem.Price}}¥</span></p>
                         </div>
                                 <div class="add-cart">
-                                    <h4><a href="/user/pay?id={{$elem.Goods_id}}">购买</a></h4>
+                                    <h4><a href="/user/pay?id={{$elem.Goods_id}}&title={{$elem.Title}}&price={{$elem.Price}}">购买</a></h4>
                                  </div>
                              <div class="clear"></div>
                     </div>

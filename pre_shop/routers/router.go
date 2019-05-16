@@ -7,6 +7,7 @@ import (
 )
 
 func init() {
+	/* 首页显示界面路由 */
     beego.Router("/", &controllers.IndexController{})
 	beego.Router("/index",&controllers.IndexController{})
 	beego.Router("/about",&controllers.AboutController{})
@@ -31,9 +32,14 @@ func init() {
 	beego.Router("/user/goods",&user.GoodsController{},`post:Sell`)
 	beego.Router("/goods/cart",&user.GoodsController{},`get:Cart`)
 	beego.Router("/cart/show",&user.CartController{})
+	beego.Router("/goods/del",&user.GoodsController{},`get:Del`)
 
     beego.Router("/goods/list",&controllers.ListController{})
 	beego.Router("/goods/category",&controllers.ListController{},`get:Category`)
 
+
+    //订单
+	beego.Router("/user/pay",&user.OrderController{},`get:Pay`)
+	beego.Router("/order/del",&user.OrderController{},`get:Del`)
 
 }

@@ -60,8 +60,12 @@
 				<div class="resp-tabs-container">
 					<div class="product-desc">
 						商品细节：<p>{{.Goods.Desc}}</p>
-						转卖原因：<p>{{.Goods.Cause}}</p>					</div>
-
+						转卖原因：<p>{{.Goods.Cause}}</p>	</div>
+						{{if .Goods.Origin_price}}
+						<div class="price">
+                            <p>原始价格: <span>{{.Goods.Origin_price}}¥</span></p>
+                        </div>
+                        {{end}}
 				 <div class="product-tags">
 						 <p></p></div>
 

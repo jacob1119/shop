@@ -20,6 +20,8 @@ type Goods struct {
 	Origin_price string
 	Image        string
 	CategoryName string
+	Sold         int
+	Time_string  string
 }
 
 // 完成User类型定义
@@ -37,9 +39,8 @@ type GoodShow struct {
 	Origin_price string
 	Image        string
 	CategoryName string
+	Sold         int
 }
-
-
 
 func (g *Goods) Create() (id int64, err error) {
 	o := orm.NewOrm()
@@ -52,4 +53,20 @@ func (g *Goods) ReadDB() (err error) {
 	o := orm.NewOrm()
 	err = o.Read(g)
 	return err
+}
+
+func (g *Goods) Del() (num int64,err error) {
+	o := orm.NewOrm()
+	o.Using("default")
+	num,err = o.Delete(g)
+
+	return num,err
+}
+
+func (g *Goods) Modify() (rows int64,err error) {
+	o := orm.NewOrm()
+	o.Using("default")
+	num, err := o.Update(g,"sold")
+
+	return num,err
 }
