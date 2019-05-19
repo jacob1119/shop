@@ -88,7 +88,7 @@
                 </div>
                 <div class="ms-name-info">
                     <div class="info-safety">
-                        <a class="manage-addr"><i style="background-image: url(/static/user/img/地址管理.png);"></i>地址管理</a>
+                        <a class="manage-addr"><i style="background-image: url(/static/user/img/地址管理.png);"></i>WelCome</a>
                     </div>
                 </div>
             </div>
@@ -112,21 +112,18 @@
                                 <a href="#tixing" data-toggle="tab">发售商品</a>
                             </dd>
                             <dd>
-                                <a>商品评价</a>
+                                <a href="#pinglun" data-toggle="tab">消息通知</a>
                             </dd>
                             <dt><img src="/static/user/img/左侧/我的买啦.png"  style="margin-right: 10px;margin-left: -20px;"/>作为买家</dt>
                             <dd>
-                                <a>我的购买</a>
+                                <a href="#about" data-toggle="tab">我的购买</a>
                             </dd>
                             <dd>
-                                <a>我的订单</a>
+                                <a href="#tixing" data-toggle="tab">发售商品</a>
                             </dd>
                             <dt><img src="/static/user/img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>其他</dt>
                             <dd>
                                 <a >我的个人信息</a>
-                            </dd>
-                            <dd>
-                                <a>我的地址</a>
                             </dd>
                         </dl>
 
@@ -140,11 +137,13 @@
                         <div class="server-tab" style="margin-top: 20px;">
 
                             <ul class="sui-nav nav-tabs">
-                              <li class="active"><a href="#index" data-toggle="tab">我的提醒</a></li>
+                              <li class="active"><a href="#index" data-toggle="tab">欢迎登陆</a></li>
                               <li><a href="#profile" data-toggle="tab">我的发售</a></li>
                               <li><a href="#about" data-toggle="tab">我的购买</a></li>
                               <li><a href="#tixing" data-toggle="tab">发售商品</a></li>
                               <li><a href="#set" data-toggle="tab">购买我的</a></li>
+                              <li><a href="#pinglun" data-toggle="tab">通知消息</a></li>
+                              <li><a href="#contact" data-toggle="tab">联系对方</a></li>
                             </ul>
                             <div class="tab-content">
                              <div id="index" class="tab-pane active">
@@ -153,8 +152,7 @@
                                             <th  style="line-height:50px;margin-left:-10px;" nowrap><font style="font-size: 14px; ">消息通知</font></th>
                                             <th  style="line-height:50px;margin-left:0px;" nowrap><font style="font-size: 14px; ">发售商品数</font></th>
                                             <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">购买商品数</font></th>
-                                            <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">在线订单</font></th>
-                                        </tr>
+                                         </tr>
                                         <tr >
                                                <td style="font-size: 12px;">
                                                    <span style="margin-left: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -167,10 +165,7 @@
                                                <td style="margin-left: 200px;font-size: 12px">
                                                        <span style="margin-left: 150px;">0</span>
                                                </td>
-                                               <td style="margin-left: 200px;font-size: 12px">
-                                                   <span style="margin-left: 28px;">5300.00</span>
-                                               </td>
-                                               <td style="font-size: 12px"></td>
+
                                         </tr>
                                     </table>
                               </div>
@@ -265,7 +260,7 @@
                                                      <span style="margin-left: 28px;"><a href="/order/del?id={{$elem.Id}}&gid={{$elem.Goods_id}}&title={{$elem.Title}}">撤单</a></span>
                                                  </td>
                                                  <td style="font-size: 12px">
-                                                      <span style="margin-left: 28px;"><a href="/goods/contact?id={{$elem.Id}}&title={{$elem.Title}}">联系卖方</a></span>
+                                                      <span style="margin-left: 28px;"><a href="#contact" data-toggle="tab">联系卖方</a></span>
                                                   </td>
                                             </tr>
                                          {{end}}
@@ -332,55 +327,141 @@
 
                                <div id="set" class="tab-pane">
                                 <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
+                                    <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
+                                        <tr  style="background-color: #f8f8f8;" >
+                                            <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">商品名称</font></th>
+                                                <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">商品价格</font></th>
+                                                <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">下单时间</font></th>
+                                                <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">买方</font></th>
+                                                <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
+                                                <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">删除</font></th>
+                                                <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">联系买家</font></th>
+                                        </tr>
+                                        {{range $index, $elem := .MySold}}
+                                              {{if $elem.Id}}
+                                                <tr >
+                                                    <td style="padding: 20px;">
+                                                    <img src="/{{$elem.Image}}" style="max-width: 80px;max-height: 80px;margin-left: ;" />
+                                                    </td>
+                                                    <td >
+                                                        <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;"><a href="/preview?id={{$elem.Id}}" target="new">{{$elem.Title}}</a></p>
+                                                    </td>
+                                                    <td style="font-size: 12px;">
+                                                        <span style="margin-left: 41px;">{{$elem.Price}}
+                                                        </span>
+                                                    </td>
+                                                    <td style="font-size: 12px">{{$elem.Time_string}}</td>
+                                                    <td style="font-size: 12px">{{$elem.Buyer}}</td>
+                                                    <td style="font-size: 12px">
+                                                        <span style="margin-left: 34px;">待我确认</span>
+                                                        <br />
+                                                        <br />
+                                                     </td>
+                                                     <td style="font-size: 12px">
+                                                         <span style="margin-left: 28px;"><a href="/order/del?id={{$elem.Order_id}}&title={{$elem.Title}}">撤单</a></span>
+                                                     </td>
+                                                     <td style="font-size: 12px">
+                                                          <span style="margin-left: 28px;"><a href="#contact" data-toggle="tab">联系买方</a></span>
+                                                      </td>
+                                                </tr>
+                                             {{end}}
+                                          {{end}}
+                                </table>
+                              </div>
+
+                              <div id="pinglun" class="tab-pane">
+                                 <table class="uiTable" id="return_table"  style="margin-top: 20px;border:  1px #ccc solid;    width: 90%;">
                                     <tr  style="background-color: #f8f8f8;" >
-                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:90px; ">宝贝名称</font></th>
-                                        <th  style="line-height:50px;margin-left:135px;" nowrap><font style="font-size: 14px; ">开拍时间</font></th>
-                                        <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">保证金</font></th>
-                                        <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">竞拍数量</font></th>
-                                        <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">获得数量</font></th>
-                                        <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:26px; ">当前价格(元)</font></th>
-                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">我的最高出价(元)</font></th>
-                                        <th  style="line-height:50px; " nowrap><font style="font-size: 14px;margin-left:34px; ">剩余时间</font></th>
+                                        <th  style="line-height:50px;" nowrap colspan="2"><font style="font-size: 14px;margin-left:px; ">商品标题</font></th>
+                                        <th  style="line-height:50px;margin-left:135px;" nowrap><font style="font-size: 14px; ">消息内容</font></th>
+                                        <th  style="line-height:50px;" nowrap><font style="font-size: 14px;margin-left: 41px; ">发送方</font></th>
+                                        <th  style="line-height:50px; "nowrap ><font style="font-size: 14px;margin-left:28px; ">接收方</font></th>
+                                        <th  style="line-height:50px; "  nowrap><font style="font-size: 14px;margin-left:35px; ">发送时间</font></th>
                                         <th  style="line-height:50px; " nowrap ><font style="font-size: 14px;margin-left:34px;margin-right: 20px; ">状态</font></th>
                                     </tr>
-                                    <tr >
-                                        <td style="padding: 20px;">
-                                        <img src="/static/user/img/我的拍卖/组-43.png" style="max-width: 100px;margin-left: ;" />
-                                        </td>
-                                        <td >
-                                            <p style="color: #284ec7;font-size: 12px;width: 100px;margin-top:0px;">冰雪翡翠花手镯59mm</p>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                            2016-04-15
-                                            <br />
-                                            10:00:00
-                                        </td>
-                                        <td style="font-size: 12px;">
-                                            <span style="margin-left: 41px;">500
-                                            <br /><span style="color: #F2873B;margin-left: 35px;"> 已支付</span>
-                                            </span>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                            <span style="margin-left:40px;">0</span>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                                <span style="margin-left: 40px;">0</span>
-                                        </td>
-                                        <td style="font-size: 12px">
-                                            <span style="margin-left: 28px;">5300.00</span>
-                                        </td>
-                                        <td style="font-size: 12px"></td>
-                                        <td style="font-size: 12px">
-                                                <span style="margin-left: 34px;">3小时</span></td>
-                                        <td style="font-size: 12px">
 
-                                            <span style="margin-left: 34px;">未报名</span>
-                                            <br />
-                                            <br />
-                                        <button style="font-size: 12px;margin-left: 34px;padding: 5px;border: 1px #ccc solid;">报名</button>
-                                        </td>
-                                    </tr>
+                                    {{range $index, $elem := .Message}}
+                                        {{if $elem.Id}}
+                                        <tr >
+                                            <td style="font-size: 12px;">
+                                                <span style="margin-left: 41px;">{{$elem.Title}}
+                                                <br /><span style="color: #F2873B;margin-left: 35px;"></span>
+                                                </span>
+                                            </td>
+                                            <td style="font-size: 12px">
+                                                <span style="margin-left:40px;">{{$elem.Content}}</span>
+                                            </td>
+                                            <td style="font-size: 12px">
+                                                    <span style="margin-left: 40px;">{{$elem.From_user}}</span>
+                                            </td>
+                                            <td style="font-size: 12px">
+                                                <span style="margin-left: 28px;">{{$elem.To_user}}</span>
+                                            </td>
+                                            <td style="font-size: 12px"></td>
+                                            <td style="font-size: 12px">
+                                                    <span style="margin-left: 34px;">{{$elem.Str_time}}</span></td>
+                                            <td style="font-size: 12px">
+                                                {{if $elem.Is_read}}
+                                                <span style="margin-left: 34px;">已读</span>
+                                                {{else}}
+                                                <span style="margin-left: 34px;"><a>标为已读</a></span>
+                                                {{end}}
+                                                <br />
+                                                <br />
+                                            </td>
+                                        </tr>
+                                        {{end}}
+                                    {{end}}
                                 </table>
+                              </div>
+
+
+                              <div id="contact" class="tab-pane">
+                                 <form action="/user/contact" method="post" enctype="multipart/form-data">
+                                     <div class="user-profile-wrap" style="width: 100%;height: 500px;">
+                                         <p style="margin-left: 70px;font-size: 14px;"><span style="color:#F88600;font-size: 14px;">联系对方</span><span style="margin-left: 10px;font-size: 14px;font-weight: bold;"></span> </p>
+                                     <div style="margin-left: 80px;margin-top: 10px;">
+                                      <span style="color: #F2873B;">*&nbsp;</span><span class="titles">发送对象:</span>
+                                      <select name="touser" style="padding: 5px;margin-left: 14px;">
+                                          {{range $index, $elem := .MySold}}
+                                            {{if $elem.Id}}
+                                                <option value="{{$elem.Username}}">{{$elem.Username}}</option>
+                                            {{end}}
+                                          {{end}}
+                                          {{range $index, $elem := .MyOrder}}
+                                            {{if $elem.Id}}
+                                                <option value="{{$elem.Username}}">{{$elem.Username}}</option>
+                                            {{end}}
+                                          {{end}}
+                                      </select>
+                                  </div>
+                                  <div style="margin-left: 80px;margin-top: 10px;">
+                                      <span style="color: #F2873B;">*&nbsp;</span><span class="titles">选择商品:</span>
+                                      <select name="title" style="padding: 5px;margin-left: 14px;">
+                                        {{range $index, $elem := .MySold}}
+                                          {{if $elem.Id}}
+                                              <option value="{{$elem.Title}}">{{$elem.Title}}</option>
+                                          {{end}}
+                                        {{end}}
+                                        {{range $index, $elem := .MyOrder}}
+                                          {{if $elem.Id}}
+                                              <option value="{{$elem.Title}}">{{$elem.Title}}</option>
+                                          {{end}}
+                                        {{end}}
+                                      </select>
+                                  </div>
+
+                                 <input type="text" name="fromuser" value="{{.Username}}" hidden="true" style="padding: 5px;width: 300px;margin-left: 14px;" />
+
+                                 <div style="margin-left: 70px;margin-top: 50px;">
+                                     <span style="color: #F2873B;">*&nbsp;</span><span class="titles">消息内容:</span><br>
+                                 </div>
+                                 <div style="margin-left: 150px;margin-top:-40px;">
+                                     <textarea name="content" style="width:500px;height: 90px;padding: 5px;" placeholder="在此输入"></textarea>
+                                 </div>
+
+                                 <button type="submit" style="margin-left:150px;margin-top:10px;background-color:#F37B1D ;color: #fff;width: 100px;height: 30px;border: 0px;border-radius: 5px;">确定</button>
+                                  </form>
                               </div>
                         </div>
                     </div>

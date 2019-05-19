@@ -22,6 +22,8 @@ type Goods struct {
 	CategoryName string
 	Sold         int
 	Time_string  string
+	Order_id     int
+	Buyer        string
 }
 
 // 完成User类型定义
@@ -55,18 +57,18 @@ func (g *Goods) ReadDB() (err error) {
 	return err
 }
 
-func (g *Goods) Del() (num int64,err error) {
+func (g *Goods) Del() (num int64, err error) {
 	o := orm.NewOrm()
 	o.Using("default")
-	num,err = o.Delete(g)
+	num, err = o.Delete(g)
 
-	return num,err
+	return num, err
 }
 
-func (g *Goods) Modify() (rows int64,err error) {
+func (g *Goods) Modify() (rows int64, err error) {
 	o := orm.NewOrm()
 	o.Using("default")
-	num, err := o.Update(g,"sold")
+	num, err := o.Update(g, "sold")
 
-	return num,err
+	return num, err
 }

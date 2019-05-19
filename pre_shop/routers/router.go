@@ -42,4 +42,11 @@ func init() {
 	beego.Router("/user/pay",&user.OrderController{},`get:Pay`)
 	beego.Router("/order/del",&user.OrderController{},`get:Del`)
 
+
+    // 通知公告
+	beego.Router("/user/contact",&user.TalkController{},`post:Contact`)
+
+    // 搜索
+	beego.Router("/goods/search",&controllers.ListController{},`get:Search`)
+
 }

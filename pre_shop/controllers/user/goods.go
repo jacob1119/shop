@@ -140,6 +140,18 @@ func (g *GoodsController) Cart() {
 		return
 	}
 
+	// 不能将自己发售的商品加入购物车
+	var Mine []orm.ParamsList
+	_,_ = orm.NewOrm().Raw("select username from goods where id= ?",goodsId).ValuesList(&Mine)
+
+	getUsername := Mine[0][0].(string)
+	if username == getUsername {
+		g.Data["Tips"] = "您不能将自己发售的商品加入购物车"
+		g.TplName = "bad.tpl"
+		return
+	}
+
+	// 判断商品是否以及存在购物车
 	var lists []orm.ParamsList
 	num,_ := orm.NewOrm().Raw("select * from cart where username= ? and goods_id= ?",username,goodsId).ValuesList(&lists)
 	fmt.Println(num)
@@ -149,7 +161,6 @@ func (g *GoodsController) Cart() {
 		g.TplName = "bad.tpl"
 		return
 	}
-
 
 	cart := &class.Cart{
 		Goods_id: goodsId,

@@ -84,8 +84,9 @@
      			</ul>
 	     	</div>
 	     	<div class="search_box">
-	     		<form>
-	     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+	     		<form action="/goods/search" method="get">
+	     			<input type="text" name="word" />
+	     			<input type="submit" value="" />
 	     		</form>
 	     	</div>
 	     	<div class="clear"></div>
